@@ -9,11 +9,18 @@ import {
   RefreshCw,
   RotateCcw,
   Star as StarIcon,
-  Trophy,
   Volume2,
   VolumeX,
   X,
 } from 'lucide-react';
+import characterImg from './assets/character.svg';
+import cerealImg from './assets/items/cereal.png';
+import honeyImg from './assets/items/honey.svg';
+import juiceImg from './assets/items/juice.png';
+import soupImg from './assets/items/soup.png';
+import handLeftImg from './assets/ui/hand-left.svg';
+import handRightImg from './assets/ui/hand-right.svg';
+import trophyImg from './assets/ui/trophy.svg';
 import { useCamera } from '@/hooks/useCamera';
 import { useTracker } from '@/hooks/useTracker';
 import { describeCameraError } from '@/services/camera/errorMessages';
@@ -506,6 +513,7 @@ export default function ShelfReachModule() {
       {screen === 'loading' && camera.status !== 'error' && (
         <div className="sr-screen">
           <div className="sr-card sr-card-narrow">
+            <img src={characterImg} alt="Barnaby the Grocer" className="sr-mascot-badge" />
             <span className="sr-tag">SHOULDER REHAB ARCADE</span>
             <h1 className="sr-card-title">Shoulder Shelf Reach</h1>
             <p className="sr-card-lead">Getting your pantry ready...</p>
@@ -564,6 +572,15 @@ export default function ShelfReachModule() {
       {screen === 'start' && tracker.status !== 'error' && (
         <div className="sr-screen">
           <div className="sr-card">
+            <div className="sr-hero-row">
+              <img src={characterImg} alt="Barnaby the Grocer" className="sr-mascot-badge" />
+              <div className="sr-pantry-strip" aria-hidden="true">
+                <img src={cerealImg} alt="" className="sr-pantry-thumb" />
+                <img src={juiceImg} alt="" className="sr-pantry-thumb" />
+                <img src={soupImg} alt="" className="sr-pantry-thumb" />
+                <img src={honeyImg} alt="" className="sr-pantry-thumb" />
+              </div>
+            </div>
             <span className="sr-tag">SHOULDER REHAB ARCADE</span>
             <h1 className="sr-card-title">Shoulder Shelf Reach</h1>
             <p className="sr-card-lead">
@@ -634,7 +651,7 @@ export default function ShelfReachModule() {
       {screen === 'results' && result && (
         <div className="sr-screen">
           <div className="sr-card">
-            <Trophy size={52} className="sr-trophy" />
+            <img src={trophyImg} alt="" className="sr-trophy-img" width={80} height={80} />
             <h2 className="sr-card-title">Pantry organized!</h2>
             <div className="sr-results-stars">
               {[1, 2, 3].map((i) => (
@@ -695,10 +712,10 @@ export default function ShelfReachModule() {
 
       {/* Hand cursors follow the tracked wrists above everything else */}
       <div ref={cursorLeftRef} className="sr-cursor sr-cursor-left" aria-hidden="true">
-        L
+        <img src={handLeftImg} alt="" className="sr-cursor-img" />
       </div>
       <div ref={cursorRightRef} className="sr-cursor sr-cursor-right" aria-hidden="true">
-        R
+        <img src={handRightImg} alt="" className="sr-cursor-img" />
       </div>
     </div>
   );

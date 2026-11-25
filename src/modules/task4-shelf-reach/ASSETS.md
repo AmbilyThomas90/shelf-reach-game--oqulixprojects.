@@ -9,6 +9,7 @@ sub-folders are fine.
 |-----------------------------------------|-----------------------------------|
 | `background`                            | Full-screen kitchen / pantry wall |
 | `shelf`                                 | Shelf board (stretched)           |
+| `counter`                               | Countertop and grocery cabinet    |
 | `cereal`, `juice`, `soup`, `honey`      | The four pantry items             |
 | `character`                             | Mascot standing on the counter    |
 
@@ -25,7 +26,17 @@ sub-folders are fine.
 
 | File | Source URL | Author | License |
 |------|------------|--------|---------|
-|      |            |        |         |
+| `background.jpg` | Local project asset (AI-generated illustration) | Project-generated | Project asset |
+| `shelf.png` | Local project asset (AI-generated illustration, transparent PNG) | Project-generated | Project asset |
+| `items/cereal.png` | Local project asset (AI-generated illustration, transparent PNG) | Project-generated | Project asset |
+| `items/juice.png` | Local project asset (AI-generated illustration, transparent PNG) | Project-generated | Project asset |
+| `items/soup.png` | Local project asset (AI-generated illustration, transparent PNG) | Project-generated | Project asset |
+| `items/honey.svg` | Local project asset (custom vector illustration) | Project-authored | Project asset |
+| `character.svg` | Local project asset (custom vector illustration) | Project-authored | Project asset |
+| `counter.svg` | Local project asset (custom vector illustration) | Project-authored | Project asset |
+| `ui/hand-left.svg` | Local project asset (custom vector illustration) | Project-authored | Project asset |
+| `ui/hand-right.svg` | Local project asset (custom vector illustration) | Project-authored | Project asset |
+| `ui/trophy.svg` | Local project asset (custom vector illustration) | Project-authored | Project asset |
 
 Good free sources: kenney.nl (CC0), opengameart.org, itch.io free assets,
 pixabay.com/sound-effects. Always record the license above.

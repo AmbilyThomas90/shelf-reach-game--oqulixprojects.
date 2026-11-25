@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 150" fill="none">
+  <defs>
+    <linearGradient id="woodTop" x1="0" y1="0" x2="0" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="30%" stop-color="#d97706"/>
+      <stop offset="75%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+    <linearGradient id="cabinetBody" x1="0" y1="28" x2="0" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#044232"/>
+    </linearGradient>
+    <linearGradient id="panelBody" x1="0" y1="42" x2="0" y2="138" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="brassHandle" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Cabinet front base -->
+  <rect x="6" y="24" width="1228" height="126" rx="4" fill="url(#cabinetBody)" stroke="#2d1606" stroke-width="3.5"/>
+
+  <!-- Recessed grocery counter panels (6 doors) -->
+  <g stroke="#022c22" stroke-width="3">
+    <rect x="30" y="42" width="176" height="94" rx="8" fill="url(#panelBody)"/>
+    <rect x="42" y="52" width="152" height="74" rx="5" fill="none" stroke="#34d399" stroke-width="1.5" opacity="0.35"/>
+
+    <rect x="230" y="42" width="176" height="94" rx="8" fill="url(#panelBody)"/>
+    <rect x="242" y="52" width="152" height="74" rx="5" fill="none" stroke="#34d399" stroke-width="1.5" opacity="0.35"/>
+
+    <rect x="430" y="42" width="176" height="94" rx="8" fill="url(#panelBody)"/>
+    <rect x="442" y="52" width="152" height="74" rx="5" fill="none" stroke="#34d399" stroke-width="1.5" opacity="0.35"/>
+
+    <rect x="630" y="42" width="176" height="94" rx="8" fill="url(#panelBody)"/>
+    <rect x="642" y="52" width="152" height="74" rx="5" fill="none" stroke="#34d399" stroke-width="1.5" opacity="0.35"/>
+
+    <rect x="830" y="42" width="176" height="94" rx="8" fill="url(#panelBody)"/>
+    <rect x="842" y="52" width="152" height="74" rx="5" fill="none" stroke="#34d399" stroke-width="1.5" opacity="0.35"/>
+
+    <rect x="1030" y="42" width="176" height="94" rx="8" fill="url(#panelBody)"/>
+    <rect x="1042" y="52" width="152" height="74" rx="5" fill="none" stroke="#34d399" stroke-width="1.5" opacity="0.35"/>
+  </g>
+
+  <!-- Brass drawer pulls -->
+  <g stroke="#2d1606" stroke-width="2">
+    <rect x="98" y="60" width="40" height="9" rx="4.5" fill="url(#brassHandle)"/>
+    <rect x="298" y="60" width="40" height="9" rx="4.5" fill="url(#brassHandle)"/>
+    <rect x="498" y="60" width="40" height="9" rx="4.5" fill="url(#brassHandle)"/>
+    <rect x="698" y="60" width="40" height="9" rx="4.5" fill="url(#brassHandle)"/>
+    <rect x="898" y="60" width="40" height="9" rx="4.5" fill="url(#brassHandle)"/>
+    <rect x="1098" y="60" width="40" height="9" rx="4.5" fill="url(#brassHandle)"/>
+  </g>
+
+  <!-- Shadow under counter lip -->
+  <rect x="6" y="28" width="1228" height="8" fill="#022c22" opacity="0.45"/>
+
+  <!-- Warm oak butcher-block countertop -->
+  <rect x="2" y="2" width="1236" height="28" rx="6" fill="url(#woodTop)" stroke="#2d1606" stroke-width="3.5"/>
+  <!-- Wood grain & bevel highlight -->
+  <path d="M18 8 L1222 8" stroke="#fde68a" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M90 17 Q240 14 390 18 M540 16 Q720 20 880 15 M960 18 Q1080 14 1190 17" stroke="#92400e" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+</svg>

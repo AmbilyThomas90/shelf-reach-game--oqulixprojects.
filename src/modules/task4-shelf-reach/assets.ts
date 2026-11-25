@@ -5,11 +5,19 @@
  * (any sub-folder is fine). Anything missing falls back to the built-in vector
  * art and synthesized sounds, so the game always runs.
  *
- *   Images: background, shelf, cereal, juice, soup, honey, character   (.png .jpg .webp .svg)
+ *   Images: background, shelf, counter, cereal, juice, soup, honey, character   (.png .jpg .webp .svg)
  *   Audio : pickup, place, combo, levelup, complete, music             (.mp3 .ogg .wav)
  */
 
-export type ImageKey = 'background' | 'shelf' | 'cereal' | 'juice' | 'soup' | 'honey' | 'character';
+export type ImageKey =
+  | 'background'
+  | 'shelf'
+  | 'counter'
+  | 'cereal'
+  | 'juice'
+  | 'soup'
+  | 'honey'
+  | 'character';
 export type AudioKey = 'pickup' | 'place' | 'combo' | 'levelup' | 'complete' | 'music';
 
 export interface GameAssets {
@@ -17,7 +25,16 @@ export interface GameAssets {
   audio: Partial<Record<AudioKey, HTMLAudioElement>>;
 }
 
-const IMAGE_KEYS: ImageKey[] = ['background', 'shelf', 'cereal', 'juice', 'soup', 'honey', 'character'];
+const IMAGE_KEYS: ImageKey[] = [
+  'background',
+  'shelf',
+  'counter',
+  'cereal',
+  'juice',
+  'soup',
+  'honey',
+  'character',
+];
 const AUDIO_KEYS: AudioKey[] = ['pickup', 'place', 'combo', 'levelup', 'complete', 'music'];
 
 const imageFiles = import.meta.glob<string>('./assets/**/*.{png,jpg,jpeg,webp,svg,gif}', {

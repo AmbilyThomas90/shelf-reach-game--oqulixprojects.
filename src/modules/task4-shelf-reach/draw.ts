@@ -150,20 +150,22 @@ function drawBoard(
     ctx.shadowOffsetY = 4;
   }
 
+  const shelfImg = assets.images.shelf;
+  const bracketY = shelfImg ? y + 26 : y + thick;
+
   [140, 640, 1140].forEach((bx) => {
-    ctx.fillStyle = '#64748b';
+    ctx.fillStyle = '#57534e';
     ctx.beginPath();
-    ctx.moveTo(bx - 10, y + thick);
-    ctx.lineTo(bx + 10, y + thick);
-    ctx.lineTo(bx + 3, y + thick + 30);
-    ctx.lineTo(bx - 3, y + thick + 30);
+    ctx.moveTo(bx - 11, bracketY);
+    ctx.lineTo(bx + 11, bracketY);
+    ctx.lineTo(bx + 4, bracketY + 26);
+    ctx.lineTo(bx - 4, bracketY + 26);
     ctx.closePath();
     ctx.fill();
   });
 
-  const shelfImg = assets.images.shelf;
   if (shelfImg) {
-    ctx.drawImage(shelfImg, x, y - 8, w, thick + 14);
+    ctx.drawImage(shelfImg, x, y - 22, w, 50);
   } else {
     const grad = ctx.createLinearGradient(0, y, 0, y + thick);
     grad.addColorStop(0, '#fef3c7');
@@ -179,7 +181,11 @@ function drawBoard(
   if (glow) {
     ctx.strokeStyle = glow;
     ctx.lineWidth = 3;
-    rect(ctx, x - 3, y - 3, w + 6, thick + 6, 6);
+    if (shelfImg) {
+      rect(ctx, x - 3, y - 22, w + 6, 52, 8);
+    } else {
+      rect(ctx, x - 3, y - 3, w + 6, thick + 6, 6);
+    }
     ctx.stroke();
   }
   ctx.restore();
@@ -204,43 +210,54 @@ function drawShelves(
   activeShelf: 'middle' | 'top' | null,
   now: number,
 ): void {
+  const tagOffset = assets.images.shelf ? 34 : 30;
   drawBoard(ctx, assets, SHELF_Y.top, 18, activeShelf === 'top' ? '#fbbf24' : null, now);
-  drawTag(ctx, 64, SHELF_Y.top + 30, activeShelf === 'top' ? 'TARGET: HIGH SHELF  +150' : 'HIGH SHELF  +150', '#b45309');
+  drawTag(ctx, 64, SHELF_Y.top + tagOffset, activeShelf === 'top' ? 'TARGET: HIGH SHELF  +150' : 'HIGH SHELF  +150', '#b45309');
 
   drawBoard(ctx, assets, SHELF_Y.middle, 18, activeShelf === 'middle' ? '#34d399' : null, now);
   drawTag(
     ctx,
     64,
-    SHELF_Y.middle + 30,
+    SHELF_Y.middle + tagOffset,
     activeShelf === 'middle' ? 'TARGET: MIDDLE SHELF  +100' : 'MIDDLE SHELF  +100',
     '#0f766e',
   );
 
   // counter
   const cy = SHELF_Y.counter;
-  ctx.fillStyle = 'rgba(15, 23, 42, 0.18)';
-  ctx.fillRect(24, cy + 30, W - 48, 12);
+  const counterImg = assets.images.counter;
+  if (counterImg) {
+    ctx.save();
+    ctx.shadowColor = 'rgba(15, 23, 42, 0.24)';
+    ctx.shadowBlur = 12;
+    ctx.shadowOffsetY = -2;
+    ctx.drawImage(counterImg, 20, cy - 8, W - 40, H - (cy - 8) + 4);
+    ctx.restore();
+  } else {
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.18)';
+    ctx.fillRect(24, cy + 30, W - 48, 12);
 
-  const top = ctx.createLinearGradient(0, cy, 0, cy + 28);
-  top.addColorStop(0, '#b45309');
-  top.addColorStop(0.35, '#92400e');
-  top.addColorStop(1, '#451a03');
-  ctx.fillStyle = top;
-  rect(ctx, 24, cy, W - 48, 28, 5);
-  ctx.fill();
-  ctx.fillStyle = '#fbbf24';
-  ctx.fillRect(28, cy, W - 56, 4);
+    const top = ctx.createLinearGradient(0, cy, 0, cy + 28);
+    top.addColorStop(0, '#b45309');
+    top.addColorStop(0.35, '#92400e');
+    top.addColorStop(1, '#451a03');
+    ctx.fillStyle = top;
+    rect(ctx, 24, cy, W - 48, 28, 5);
+    ctx.fill();
+    ctx.fillStyle = '#fbbf24';
+    ctx.fillRect(28, cy, W - 56, 4);
 
-  // cabinet front
-  ctx.fillStyle = '#1e293b';
-  ctx.fillRect(24, cy + 28, W - 48, H - (cy + 28));
-  for (let x = 60; x < W - 60; x += 200) {
-    ctx.fillStyle = '#334155';
-    rect(ctx, x, cy + 46, 170, H - (cy + 46) - 14, 8);
-    ctx.fill();
-    ctx.fillStyle = '#f59e0b';
-    rect(ctx, x + 70, cy + 58, 30, 6, 3);
-    ctx.fill();
+    // cabinet front
+    ctx.fillStyle = '#1e293b';
+    ctx.fillRect(24, cy + 28, W - 48, H - (cy + 28));
+    for (let x = 60; x < W - 60; x += 200) {
+      ctx.fillStyle = '#334155';
+      rect(ctx, x, cy + 46, 170, H - (cy + 46) - 14, 8);
+      ctx.fill();
+      ctx.fillStyle = '#f59e0b';
+      rect(ctx, x + 70, cy + 58, 30, 6, 3);
+      ctx.fill();
+    }
   }
   drawTag(ctx, 64, cy + 34, 'COUNTER - HOVER A HAND OVER AN ITEM', '#0284c7');
 }
@@ -538,9 +555,9 @@ function drawMascot(
   const sprite = assets.images.character;
   ctx.save();
   if (sprite) {
-    const h = 230;
+    const h = 232;
     const w = (sprite.width / sprite.height) * h;
-    ctx.drawImage(sprite, baseX - w / 2, baseY - h + bob, w, h);
+    ctx.drawImage(sprite, baseX - w / 2, baseY - h + 6 + bob, w, h);
   } else {
     ctx.translate(baseX, baseY - 68 + bob);
     ctx.scale(1.9, 1.9);
@@ -549,10 +566,10 @@ function drawMascot(
   ctx.restore();
 
   // speech bubble
-  const bw = 290;
+  const bw = 276;
   const bh = 74;
-  const bx = 950;
-  const by = 292;
+  const bx = 972;
+  const by = 248;
 
   ctx.save();
   ctx.shadowColor = 'rgba(15, 23, 42, 0.2)';
@@ -584,7 +601,14 @@ function drawMascot(
 }
 
 // ----------------------------------------------------------- target + arms
-function drawTargetSlot(ctx: CanvasRenderingContext2D, t: TargetSlot, near: boolean, now: number): void {
+function drawTargetSlot(
+  ctx: CanvasRenderingContext2D,
+  assets: GameAssets,
+  heldKind: ItemKind | null,
+  t: TargetSlot,
+  near: boolean,
+  now: number,
+): void {
   ctx.save();
   const pulse = Math.sin(now * (near ? 0.012 : 0.005)) * (near ? 7 : 4);
   const w = ITEM_W + 18 + pulse;
@@ -604,6 +628,15 @@ function drawTargetSlot(ctx: CanvasRenderingContext2D, t: TargetSlot, near: bool
   rect(ctx, t.x - w / 2, t.y - h / 2, w, h, 12);
   ctx.fill();
   ctx.stroke();
+
+  if (heldKind) {
+    const sprite = assets.images[heldKind];
+    if (sprite) {
+      ctx.globalAlpha = near ? 0.48 : 0.26;
+      const s = Math.min(ITEM_W / sprite.width, ITEM_H / sprite.height) * 0.96;
+      ctx.drawImage(sprite, t.x - (sprite.width * s) / 2, t.y - (sprite.height * s) / 2, sprite.width * s, sprite.height * s);
+    }
+  }
   ctx.restore();
 
   ctx.save();
@@ -741,7 +774,8 @@ export function drawScene(ctx: CanvasRenderingContext2D, g: GameState, assets: G
   drawArmBones(ctx, g.arms);
 
   if (target) {
-    drawTargetSlot(ctx, target, g.targetProximity, now);
+    const heldItem = g.items.find((it) => it.id === g.heldId);
+    drawTargetSlot(ctx, assets, heldItem ? heldItem.kind : null, target, g.targetProximity, now);
     const w = g.heldBy ? g.wrists[g.heldBy] : null;
     if (w) {
       ctx.save();

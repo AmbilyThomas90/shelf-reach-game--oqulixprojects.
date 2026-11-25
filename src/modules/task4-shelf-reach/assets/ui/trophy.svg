@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
+  <defs>
+    <linearGradient id="cupGold" x1="40" y1="24" x2="120" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="40%" stop-color="#fbbf24"/>
+      <stop offset="85%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="baseWood" x1="44" y1="116" x2="116" y2="146" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Soft glow behind cup -->
+  <circle cx="80" cy="68" r="56" fill="#fef08a" opacity="0.28"/>
+
+  <!-- Trophy handles -->
+  <path d="M44 38 C22 38 20 72 46 76" stroke="#f59e0b" stroke-width="9" stroke-linecap="round"/>
+  <path d="M44 38 C22 38 20 72 46 76" stroke="#2d1606" stroke-width="3.5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M116 38 C138 38 140 72 114 76" stroke="#f59e0b" stroke-width="9" stroke-linecap="round"/>
+  <path d="M116 38 C138 38 140 72 114 76" stroke="#2d1606" stroke-width="3.5" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Stem & pedestal -->
+  <rect x="70" y="92" width="20" height="24" fill="url(#cupGold)" stroke="#2d1606" stroke-width="3.5"/>
+  <rect x="46" y="116" width="68" height="24" rx="7" fill="url(#baseWood)" stroke="#2d1606" stroke-width="3.5"/>
+  <rect x="58" y="123" width="44" height="10" rx="4" fill="#fde047" stroke="#2d1606" stroke-width="2"/>
+
+  <!-- Main trophy chalice -->
+  <path d="M42 26 L118 26 L114 66 C112 88 98 100 80 100 C62 100 48 88 46 66 Z"
+        fill="url(#cupGold)" stroke="#2d1606" stroke-width="4" stroke-linejoin="round"/>
+  <ellipse cx="80" cy="26" rx="38" ry="8" fill="#fef08a" stroke="#2d1606" stroke-width="3.5"/>
+
+  <!-- Glossy highlight -->
+  <path d="M54 38 L56 70" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.65"/>
+
+  <!-- Center star emblem -->
+  <polygon points="80,44 84,54 95,55 87,62 89,73 80,67 71,73 73,62 65,55 76,54"
+           fill="#fffbeb" stroke="#92400e" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- Sparkle stars -->
+  <path d="M26 22 L29 29 L36 32 L29 35 L26 42 L23 35 L16 32 L23 29 Z" fill="#fbbf24"/>
+  <path d="M134 18 L136 24 L142 26 L136 28 L134 34 L132 28 L126 26 L132 24 Z" fill="#fbbf24"/>
+</svg>
